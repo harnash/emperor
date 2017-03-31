@@ -40,6 +40,7 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+    branch: master
     condition: "$DEPLOY"
     repo: harnash/emperor
   api_key:
