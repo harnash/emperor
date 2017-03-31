@@ -1,6 +1,9 @@
 package main
 
-import "github.com/harnash/emperor/cmd"
+import (
+	"github.com/harnash/emperor/cmd"
+	"github.com/spf13/viper"
+)
 
 var (
 	Version   string
@@ -8,5 +11,8 @@ var (
 )
 
 func main() {
+	viper.Set("version", Version)
+	viper.Set("build_time", BuildTime)
+
 	cmd.Execute()
 }
