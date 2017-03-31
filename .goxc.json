@@ -1,0 +1,41 @@
+{
+	"Tasks": [
+		"default"
+	],
+	"TaskSettings": {
+		"publish-github": {
+			"body": "",
+			"owner": "harnash",
+			"repository": "emperor"
+		},
+		"deb": {
+				"bin-dir": "/usr/bin",
+				"go-sources-dir": ".",
+				"metadata": {
+						"maintainer": "Łukasz Harasimowicz",
+						"maintainerEmail": "dev@harnash.eu"
+				},
+				"metadata-deb": {
+						"Build-Depends": "debhelper (>=4.0.0), golang-go, gcc",
+						"Depends": ""
+				},
+				"other-mappped-files": {},
+				"rmtemp": true
+		}
+	},
+	"TasksExclude": [
+		"go-vet",
+		"go-test"
+	],
+	"BuildConstraints": "linux",
+	"BuildSettings": {
+		"LdFlagsXVars": {
+			"TimeNow": "github.com/harnash/emperor/main.BuildTime",
+			"Version": "github.com/harnash/emperor/main.Version"
+		},
+		"Tags": "important",
+		"ExtraArgs": ["-a"]
+	},
+	"PackageVersion": "0.0.1",
+	"ConfigVersion": "0.9"
+}
