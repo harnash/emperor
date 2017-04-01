@@ -24,6 +24,7 @@ import (
 	"fmt"
 	"os"
 
+	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -59,10 +60,11 @@ func initConfig() {
 
 	viper.SetConfigName(".emperor") // name of config file (without extension)
 	viper.AddConfigPath("$HOME")    // adding home directory as first search path
-	viper.AutomaticEnv()            // read in environment variables that match
+	viper.AddConfigPath("./")
+	viper.AutomaticEnv() // read in environment variables that match
 
 	// If a config file is found, read it in.
 	if err := viper.ReadInConfig(); err == nil {
-		fmt.Println("Using config file:", viper.ConfigFileUsed())
+		log.WithField("config", viper.ConfigFileUsed()).Info("Using config file")
 	}
 }
